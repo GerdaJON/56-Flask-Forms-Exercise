@@ -67,15 +67,10 @@ class User(db.Model):
     email = db.Column(db.String(70), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)
 
-
 class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
-
-@app.route("/")
-def index():
-    return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
